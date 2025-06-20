@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+  </head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+class Parent extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      balance: 1000,
+      showChild: false,
+    };
+    console.log("constructor() - Parent Component");
+  }
+
+  componentDidMount() {
+    console.log("componentDidMount() - Parent Component");
+  }
+
+  componentDidUpdate(preProps, prevState) {
+      console.log("componentDidUpdate() - Parent Component", {
+      prevProps,
+      prevState,
+    });
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount() - Parent Component");
+  }
+
+  render() {
+    console.log("render() - Parent Component");
+    return (
+      <div>
+        <p>继承者们的故事</p>
+        <p>Parent</p>
+        <p>
+        account balance: <mark>{this.state.balance}</mark>
+        </p>
+        </div>
+    );
+  }
+}
+ReactDOM.render(<Parent />, document.getElementById("root"));
+
+</script>
+</body>
+</html>
